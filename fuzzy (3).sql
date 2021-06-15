@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2021 at 11:55 AM
--- Server version: 10.4.17-MariaDB
+-- Generation Time: Jun 15, 2021 at 05:07 AM
+-- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -42,7 +42,37 @@ INSERT INTO `bagian_tanaman` (`id`, `bagian`) VALUES
 (5, 'Ranting Kecil'),
 (6, 'Pokok Tanaman'),
 (7, 'Akar Serabut'),
-(8, 'Daun');
+(8, 'Daun'),
+(9, 'Buah');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cbr_table`
+--
+
+CREATE TABLE `cbr_table` (
+  `id` int(11) NOT NULL,
+  `penyakit_id` int(11) NOT NULL,
+  `diagnosa1` int(11) NOT NULL,
+  `diagnosa2` int(11) DEFAULT NULL,
+  `diagnosa3` int(11) DEFAULT NULL,
+  `diagnosa4` int(11) DEFAULT NULL,
+  `diagnosa5` int(11) DEFAULT NULL,
+  `diagnosa6` int(11) DEFAULT NULL,
+  `diagnosa7` int(11) DEFAULT NULL,
+  `diagnosa8` int(11) DEFAULT NULL,
+  `diagnosa9` int(11) DEFAULT NULL,
+  `diagnosa10` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cbr_table`
+--
+
+INSERT INTO `cbr_table` (`id`, `penyakit_id`, `diagnosa1`, `diagnosa2`, `diagnosa3`, `diagnosa4`, `diagnosa5`, `diagnosa6`, `diagnosa7`, `diagnosa8`, `diagnosa9`, `diagnosa10`) VALUES
+(3, 2, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0),
+(4, 3, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -165,7 +195,9 @@ INSERT INTO `tbl_last_login` (`id`, `userId`, `sessionData`, `machineIp`, `userA
 (9, 9, '{\"role\":\"3\",\"roleText\":\"Employee\",\"name\":\"Michael\"}', '::1', 'Chrome 89.0.4389.114', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36', 'Windows 10', '2021-04-13 17:46:48'),
 (10, 1, '{\"role\":\"1\",\"roleText\":\"System Administrator\",\"name\":\"System Administrator\"}', '::1', 'Chrome 89.0.4389.114', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36', 'Windows 10', '2021-04-14 08:07:46'),
 (11, 3, '{\"role\":\"3\",\"roleText\":\"Employee\",\"name\":\"Employee\"}', '::1', 'Chrome 89.0.4389.114', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36', 'Windows 10', '2021-04-15 09:24:54'),
-(12, 1, '{\"role\":\"1\",\"roleText\":\"System Administrator\",\"name\":\"System Administrator\"}', '::1', 'Chrome 89.0.4389.114', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36', 'Windows 10', '2021-04-15 09:28:21');
+(12, 1, '{\"role\":\"1\",\"roleText\":\"System Administrator\",\"name\":\"System Administrator\"}', '::1', 'Chrome 89.0.4389.114', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36', 'Windows 10', '2021-04-15 09:28:21'),
+(13, 1, '{\"role\":\"1\",\"roleText\":\"System Administrator\",\"name\":\"System Administrator\"}', '::1', 'Chrome 90.0.4430.72', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36', 'Windows 10', '2021-04-16 14:19:15'),
+(14, 1, '{\"role\":\"1\",\"roleText\":\"System Administrator\",\"name\":\"System Administrator\"}', '::1', 'Chrome 90.0.4430.93', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'Windows 10', '2021-05-09 16:15:52');
 
 -- --------------------------------------------------------
 
@@ -248,6 +280,12 @@ ALTER TABLE `bagian_tanaman`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cbr_table`
+--
+ALTER TABLE `cbr_table`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `ci_sessions`
 --
 ALTER TABLE `ci_sessions`
@@ -304,7 +342,13 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `bagian_tanaman`
 --
 ALTER TABLE `bagian_tanaman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `cbr_table`
+--
+ALTER TABLE `cbr_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `diagnosa`
@@ -328,7 +372,7 @@ ALTER TABLE `solusi_penyakit`
 -- AUTO_INCREMENT for table `tbl_last_login`
 --
 ALTER TABLE `tbl_last_login`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_reset_password`
