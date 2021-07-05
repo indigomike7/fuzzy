@@ -1,3 +1,9 @@
+<?php 
+$resultpoin=array();
+$tinggi=array();
+$sedang=array();
+$rendah=array();
+?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -31,7 +37,7 @@
 					for($j=0;$j<count($diagnosa);$j++)
 					{
 						if($this->input->post("diagnosa".($i+1)) != "0" ) { if($this->input->post("diagnosa".($i+1))==$diagnosa[$j]->id) { $selected=" selected='selected' "; }else { $selected=""; }}
-						echo "<option value='".$diagnosa[$j]->id."' ".$selected .">".$diagnosa[$j]->gejala." pada".$diagnosa[$j]->bagian."</option>";
+						echo "<option value='".$diagnosa[$j]->id."' ".$selected .">".$diagnosa[$j]->gejala." pada ".$diagnosa[$j]->bagian."</option>";
 					}
 					?>
 					</select>
@@ -61,7 +67,7 @@
 						{ 
 							if($this->input->post("diagnosa".($i+1))==$diagnosa[$j]->id) 
 							{ 
-								echo $diagnosa[$j]->gejala." pada".$diagnosa[$j]->bagian."<br/>"; 
+								echo $diagnosa[$j]->gejala." pada ".$diagnosa[$j]->bagian."<br/>"; 
 							}
 								else {  }
 						}
@@ -71,7 +77,76 @@
 				}
 				if(count($results)>0)
 				{
-					echo "<h2>Found <b>".count($results)."</b> results</h2><p>&nbsp;</p><p>&nbsp;</p>";
+					for($i=0;$i<count($results);$i++)
+					{
+						if($results[$i]->poin==60 || $results[$i]->poin==80 || $results[$i]->poin==100)
+						{
+							$tinggi[]=$results[$i];
+						}
+						if($results[$i]->poin==30 || $results[$i]->poin==50 || $results[$i]->poin==70)
+						{
+							$sedang[]=$results[$i];
+						}
+						if($results[$i]->poin==0 || $results[$i]->poin==20  || $results[$i]->poin==10 || $results[$i]->poin==40)
+						{
+							$rendah[]=$results[$i];
+						}
+					}
+				}
+				if(count($tinggi)>0)
+				{
+					echo "<h2>Found <b>".count($tinggi)." High Point </b> results</h2><p>&nbsp;</p><p>&nbsp;</p>";
+					for($i=0;$i<count($tinggi);$i++)
+					{
+						echo "<h4>".$tinggi[$i]->penyakit."</h4>";
+						echo "<p>".$tinggi[$i]->deskripsi."</p>";
+						for($j=1;$j<11;$j++)
+						{
+							//$val = "diagnosa".$j;
+							echo $tinggi[$i]->diagnosa1;
+						}
+						
+						echo "<p>&nbsp;</p><p>&nbsp;</p>";
+					}
+					
+				}
+				if(count($sedang)>0)
+				{
+					echo "<h2>Found <b>".count($sedang)." Fair Point </b> results</h2><p>&nbsp;</p><p>&nbsp;</p>";
+					for($i=0;$i<count($sedang);$i++)
+					{
+						echo "<h4>".$sedang[$i]->penyakit."</h4>";
+						echo "<p>".$sedang[$i]->deskripsi."</p>";
+						for($j=1;$j<11;$j++)
+						{
+							//$val = "diagnosa".$j;
+							echo $sedang[$i]->diagnosa1;
+						}
+						
+						echo "<p>&nbsp;</p><p>&nbsp;</p>";
+					}
+					
+				}
+				if(count($rendah)>0)
+				{
+					echo "<h2>Found <b>".count($rendah)." Low Point </b> results</h2><p>&nbsp;</p><p>&nbsp;</p>";
+					for($i=0;$i<count($rendah);$i++)
+					{
+						echo "<h4>".$rendah[$i]->penyakit."</h4>";
+						echo "<p>".$rendah[$i]->deskripsi."</p>";
+						for($j=1;$j<11;$j++)
+						{
+							//$val = "diagnosa".$j;
+							echo $rendah[$i]->diagnosa1;
+						}
+						
+						echo "<p>&nbsp;</p><p>&nbsp;</p>";
+					}
+					
+				}
+				if(count($results)>0)
+				{
+					echo "<h2>Found <b>".count($results)." met Plant Disease</b> results</h2><p>&nbsp;</p><p>&nbsp;</p>";
 					for($i=0;$i<count($results);$i++)
 					{
 						echo "<h4>".$results[$i]->penyakit."</h4>";

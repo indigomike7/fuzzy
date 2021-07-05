@@ -106,7 +106,7 @@ class Penyakit_model extends CI_Model
 			for($j=1;$j<11;$j++)
 			{
 				$val2="diagnosa".$j;
-				$this->db->select('BaseTbl.*, Tbl2.gejala,Tbl3.bagian, Tbl2.bagian_id as sum');
+				$this->db->select('BaseTbl.*, Tbl2.gejala,Tbl2.poin,Tbl3.bagian, Tbl2.bagian_id as sum');
 				$this->db->from('penyakit as BaseTbl');
 				$this->db->join('diagnosa as Tbl2', 'BaseTbl.'.$val2.' = Tbl2.id','left');
 				$this->db->join('bagian_tanaman as Tbl3', 'Tbl2.bagian_id= Tbl3.id','left');
@@ -233,7 +233,7 @@ class Penyakit_model extends CI_Model
 			for($j=1;$j<11;$j++)
 			{
 				$val2="diagnosa".$j;
-				$this->db->select('BaseTbl.*, Tbl2.gejala,Tbl3.bagian, Tbl2.bagian_id as sum');
+				$this->db->select('BaseTbl.*, Tbl2.gejala, Tbl2.poin ,Tbl3.bagian, Tbl2.bagian_id as sum');
 				$this->db->from('penyakit as BaseTbl');
 				$this->db->join('diagnosa as Tbl2', 'BaseTbl.'.$val2.' = Tbl2.id','left');
 				$this->db->join('bagian_tanaman as Tbl3', 'Tbl2.bagian_id= Tbl3.id','left');

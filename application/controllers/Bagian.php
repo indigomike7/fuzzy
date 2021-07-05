@@ -26,7 +26,7 @@ class Bagian extends BaseController
      */
     public function index()
     {
-        $this->global['pageTitle'] = 'CodeInsect : Dashboard';
+        $this->global['pageTitle'] = 'Sistem Pakar Penyakit Tanaman : Bagian Tanaman';
         
         $this->loadViews("dashboard", $this->global, NULL , NULL);
     }

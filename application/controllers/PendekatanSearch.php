@@ -88,7 +88,7 @@ class PendekatanSearch extends BaseController
 		//echo "<pre>"; echo var_dump($data['results']); echo "</pre>";;
 		
 		}
-		echo(print_r($keyword));
+		//echo(print_r($keyword));
 		$data['diagnosa'] = $this->diagnosa_model->diagnosaListingAll();
 		$data['keyword'] = $keyword;
 		$this->loadViews("pendekatansearch", $this->global, $data, NULL);
