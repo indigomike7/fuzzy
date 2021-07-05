@@ -34,7 +34,7 @@ class Penyakit extends BaseController
     /**
      * This function is used to load the user list
      */
-    function penyakitListing()
+    function penyakitListing($start=0)
     {
         if($this->isAdmin() == TRUE)
         {
@@ -51,7 +51,7 @@ class Penyakit extends BaseController
 
 			$returns = $this->paginationCompress ( "penyakitListing/", $count, 10 );
             
-            $data['userRecords'] = $this->penyakit_model->penyakitListing($searchText, $returns["page"], $returns["segment"]);
+            $data['userRecords'] = $this->penyakit_model->penyakitListing($searchText, $start, 10);
             
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             

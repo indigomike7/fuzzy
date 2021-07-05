@@ -34,7 +34,7 @@ class Solusi extends BaseController
     /**
      * This function is used to load the user list
      */
-    function solusiListing()
+    function solusiListing($start=0)
     {
         if($this->isAdmin() == TRUE)
         {
@@ -51,7 +51,7 @@ class Solusi extends BaseController
 
 			$returns = $this->paginationCompress ( "solusiListing/", $count, 10 );
             
-            $data['userRecords'] = $this->solusi_model->solusiListing($searchText, $returns["page"], $returns["segment"]);
+            $data['userRecords'] = $this->solusi_model->solusiListing($searchText, $start, 10);
             
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             
@@ -89,6 +89,8 @@ class Solusi extends BaseController
      */
     function addNewSolusi()
     {
+                $this->load->model('solusi_model');
+                $this->load->model('penyakit_model');
         if($this->isAdmin() == TRUE)
         {
             $this->loadThis();
@@ -97,14 +99,8 @@ class Solusi extends BaseController
         {
             $this->load->library('form_validation');
             
-            $this->form_validation->set_rules('deskripsi','Deskripsi Solusi','trim|required|max_length[128]');
-            $this->form_validation->set_rules('penyakit_id','Penyakit','trim|required|max_length[128]');
-/*            $this->form_validation->set_rules('email','Email','trim|required|valid_email|max_length[128]');
-            $this->form_validation->set_rules('password','Password','required|max_length[20]');
-            $this->form_validation->set_rules('cpassword','Confirm Password','trim|required|matches[password]|max_length[20]');
-            $this->form_validation->set_rules('role','Role','trim|required|numeric');
-            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]');
- */           
+            $this->form_validation->set_rules('deskripsi','Deskripsi Solusi','trim|required');
+            $this->form_validation->set_rules('penyakit_id','Penyakit','trim|required');
             if($this->form_validation->run() == FALSE)
             {
 			$data=array();
@@ -122,7 +118,6 @@ class Solusi extends BaseController
                 */
                 $userInfo = array('deskripsi'=>$deskripsi,'penyakit_id'=>$penyakit_id);
                 
-                $this->load->model('solusi_model');
                 $result = $this->solusi_model->addNewSolusi($userInfo);
                 
                 if($result > 0)
@@ -187,7 +182,7 @@ class Solusi extends BaseController
             
             $userId = $this->input->post('userId');
             
-            $this->form_validation->set_rules('deskripsi','Deskripsi Solusi','trim|required|max_length[128]');
+            $this->form_validation->set_rules('deskripsi','Deskripsi Solusi','trim|required');
             
             if($this->form_validation->run() == FALSE)
             {

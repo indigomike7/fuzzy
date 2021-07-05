@@ -34,7 +34,7 @@ class Bagian extends BaseController
     /**
      * This function is used to load the user list
      */
-    function bagianListing()
+    function bagianListing($start=0)
     {
         if($this->isAdmin() == TRUE)
         {
@@ -51,9 +51,9 @@ class Bagian extends BaseController
 
 			$returns = $this->paginationCompress ( "bagianListing/", $count, 10 );
             
-            $data['userRecords'] = $this->bagian_model->bagianListing($searchText, $returns["page"], $returns["segment"]);
+            $data['userRecords'] = $this->bagian_model->bagianListing($searchText, $start, '10');
             
-            $this->global['pageTitle'] = 'CodeInsect : User Listing';
+            $this->global['pageTitle'] = 'Sistem Pakar : Bagian Listing';
             
             $this->loadViews("bagian", $this->global, $data, NULL);
         }
@@ -122,11 +122,11 @@ class Bagian extends BaseController
                 
                 if($result > 0)
                 {
-                    $this->session->set_flashdata('success', 'New User created successfully');
+                    $this->session->set_flashdata('success', 'New Bagian created successfully');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'User creation failed');
+                    $this->session->set_flashdata('error', 'Bagian creation failed');
                 }
                 
                 redirect('addBagian');

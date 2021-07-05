@@ -112,6 +112,69 @@ class Login extends CI_Controller
             redirect('/dashboard');
         }
     }
+    public function register()
+    {
+        $this->load->library('form_validation');
+        $isLoggedIn = $this->session->userdata('isLoggedIn');
+		$data['success'] = false;
+		$data['emailduplicate'] = false;
+		$data['login_email']="";
+        $data['login_password']="";
+		$data['confirm_password']="";
+        if(!isset($isLoggedIn) || $isLoggedIn != TRUE)
+        {
+			$data['login_email']=$this->input->post("login_email");
+			$data['login_password']=$this->input->post("login_password");
+			$data['confirm_password']=$this->input->post("confirm_password");
+			$login_email=$this->input->post("login_email");
+			$login_password=$this->input->post("login_password");
+			$confirm_password=$this->input->post("confirm_password");
+
+			$this->form_validation->set_rules('login_email', 'Email', 'required|valid_email|max_length[128]|trim');
+			$this->form_validation->set_rules('login_password', 'Password', 'required|max_length[32]');
+			$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|max_length[32]|matches[login_password]');
+
+			if($this->form_validation->run() == FALSE)
+			{
+				$this->load->view('register',$data);
+			}
+			else
+			{
+				$found=false;
+				$query=$this->db->query("select * from tbl_users where email='".$login_email."'");
+				foreach ($query->result() as $row)
+				{
+					$found=true;
+				}
+				if($found==true)
+				{
+					$data['emailduplicate'] = "Email sudah terdaftar";
+					$this->load->view('register',$data);
+					
+				}
+				else
+				{
+					$datax = array(
+							'email' => $login_email,
+							'password' => getHashedPassword($login_password),
+							'roleId' => 3,
+							'createdBy' => $login_email,
+							'createdDtm' => date("Y-m-d H:i:s")
+					);
+
+					$this->db->insert('tbl_users', $datax);				
+					$data['success'] = "Sukses Registrasi";
+					$this->load->view('Register',$data);
+				}
+			}
+
+			
+        }
+        else
+        {
+            redirect('/dashboard');
+        }
+    }
     
     /**
      * This function used to generate reset password request link

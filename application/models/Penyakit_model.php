@@ -39,7 +39,7 @@ class Penyakit_model extends CI_Model
      * @param number $segment : This is pagination limit
      * @return array $result : This is result
      */
-    function penyakitListing($searchText = '', $page, $segment)
+    function penyakitListing($searchText = '', $segment, $page)
     {
         $this->db->select('BaseTbl.*,BaseTbl2.gejala,BaseTbl3.bagian');
         $this->db->from('penyakit as BaseTbl');

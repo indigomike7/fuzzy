@@ -34,7 +34,7 @@ class Diagnosa extends BaseController
     /**
      * This function is used to load the user list
      */
-    function diagnosaListing()
+    function diagnosaListing($start=0)
     {
         if($this->isAdmin() == TRUE)
         {
@@ -51,7 +51,7 @@ class Diagnosa extends BaseController
 
 			$returns = $this->paginationCompress ( "diagnosaListing/", $count, 10 );
             
-            $data['userRecords'] = $this->diagnosa_model->diagnosaListing($searchText, $returns["page"], $returns["segment"]);
+            $data['userRecords'] = $this->diagnosa_model->diagnosaListing($searchText, $start, 10);
             
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             
@@ -114,12 +114,13 @@ class Diagnosa extends BaseController
             {
                 $gejala = ucwords(strtolower($this->security->xss_clean($this->input->post('gejala'))));
                 $bagian_id = ucwords(strtolower($this->security->xss_clean($this->input->post('bagian_id'))));
+                $poin = ucwords(strtolower($this->security->xss_clean($this->input->post('poin'))));
 /*                $email = strtolower($this->security->xss_clean($this->input->post('email')));
                 $password = $this->input->post('password');
                 $roleId = $this->input->post('role');
                 $mobile = $this->security->xss_clean($this->input->post('mobile'));
                 */
-                $userInfo = array('gejala'=>$gejala,'bagian_id'=>$bagian_id);
+                $userInfo = array('gejala'=>$gejala,'bagian_id'=>$bagian_id,'poin'=>$poin);
                 
                 $this->load->model('diagnosa_model');
                 $result = $this->diagnosa_model->addNewDiagnosa($userInfo);
@@ -201,10 +202,11 @@ class Diagnosa extends BaseController
 			$data['userInfo']=$this->diagnosa_model->getUserInfo($userId);
                 $gejala = ucwords(strtolower($this->security->xss_clean($this->input->post('gejala'))));
                 $bagian_id = ucwords(strtolower($this->security->xss_clean($this->input->post('bagian_id'))));
+                $poin = ucwords(strtolower($this->security->xss_clean($this->input->post('poin'))));
                 
                 $userInfo = array();
                 
-                    $userInfo = array('gejala'=>$gejala,'bagian_id'=>$bagian_id);
+                    $userInfo = array('gejala'=>$gejala,'bagian_id'=>$bagian_id,'poin'=>$poin);
                 
                 $result = $this->diagnosa_model->editDiagnosa($userInfo, $userId);
                 

@@ -2,6 +2,7 @@
 $userId = $userInfo->id;
 $gejala = $userInfo->gejala;
 $bagian_id = $userInfo->bagian_id;
+$poin = $userInfo->poin;
 /*$email = $userInfo->email;
 $mobile = $userInfo->mobile;
 $roleId = $userInfo->roleId;*/
@@ -39,6 +40,13 @@ $roleId = $userInfo->roleId;*/
                                         <label for="bagian">Gejala</label>
                                         <input type="text" class="form-control" id="gejala" placeholder="Gejala" name="gejala" value="<?php echo $gejala; ?>" maxlength="128">
                                         <input type="hidden" value="<?php echo $userId; ?>" name="userId" id="userId" />    
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6">                                
+                                    <div class="form-group">
+                                        <label for="bagian">Poin Fuzzy</label>
+                                        <input type="text" class="form-control" id="poin" placeholder="Gejala" name="poin" value="<?php echo $poin; ?>" maxlength="128">
                                     </div>
                                     
                                 </div>

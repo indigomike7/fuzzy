@@ -38,7 +38,7 @@ class Solusi_model extends CI_Model
      * @param number $segment : This is pagination limit
      * @return array $result : This is result
      */
-    function solusiListing($searchText = '', $page, $segment)
+    function solusiListing($searchText = '', $segment, $page)
     {
         $this->db->select('BaseTbl.*,BaseTbl2.penyakit');
         $this->db->from('solusi_penyakit as BaseTbl');

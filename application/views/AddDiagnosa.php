@@ -33,6 +33,13 @@
                                     </div>
                                     
                                 </div>
+                                <div class="col-md-6">                                
+                                    <div class="form-group">
+                                        <label for="diagnosa">Poin Fuzzy</label>
+                                        <input type="text" class="form-control required" value="<?php echo set_value('poin'); ?>" id="poin" name="poin" maxlength="128">
+                                    </div>
+                                    
+                                </div>
                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="email">Bagian Tanaman</label>

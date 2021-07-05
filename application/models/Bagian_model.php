@@ -54,7 +54,7 @@ class Bagian_model extends CI_Model
      * @param number $segment : This is pagination limit
      * @return array $result : This is result
      */
-    function bagianListing($searchText = '', $page, $segment)
+    function bagianListing($searchText = '', $segment, $page)
     {
         $this->db->select('BaseTbl.*');
         $this->db->from('bagian_tanaman as BaseTbl');

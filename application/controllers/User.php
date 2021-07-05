@@ -26,8 +26,27 @@ class User extends BaseController
      */
     public function index()
     {
-        $this->global['pageTitle'] = 'CodeInsect : Dashboard';
-        
+        $this->global['pageTitle'] = 'Sistem Pakar Penelitian Penyakit : Dashboard';
+		$result=$this->db->query("select count(*) as countbagian from bagian_tanaman");
+		foreach ($result->result() as $row)
+		{
+			$this->global['countbagian'] = $row->countbagian;
+		}
+		$result=$this->db->query("select count(*) as countdiagnosa from diagnosa");
+		foreach ($result->result() as $row)
+		{
+			$this->global['countdiagnosa'] = $row->countdiagnosa;
+		}
+		$result=$this->db->query("select count(*) as countpenyakit from penyakit");
+		foreach ($result->result() as $row)
+		{
+			$this->global['countpenyakit'] = $row->countpenyakit;
+		}
+		$result=$this->db->query("select count(*) as countsolusi from solusi_penyakit");
+		foreach ($result->result() as $row)
+		{
+			$this->global['countsolusi'] = $row->countsolusi;
+		}
         $this->loadViews("dashboard", $this->global, NULL , NULL);
     }
     

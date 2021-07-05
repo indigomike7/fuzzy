@@ -51,7 +51,7 @@ $roleId = $userInfo->roleId;*/
 										<?php
 										for($i=0;$i<count($penyakit);$i++)
 										{
-											echo "<option value='".$penyakit[$i]->id."' ".($bagian_id == $bagian[$i]->id ? " selected='selected' " : '' ).">".$bagian[$i]->penyakit."</option>";
+											echo "<option value='".$penyakit[$i]->id."' ".($penyakit_id==$penyakit[$i]->id ? " selected='selected' " : "").">".$penyakit[$i]->penyakit."</option>";
 										}
 										?>
 										</select>

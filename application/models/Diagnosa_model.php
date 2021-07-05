@@ -38,7 +38,7 @@ class Diagnosa_model extends CI_Model
      * @param number $segment : This is pagination limit
      * @return array $result : This is result
      */
-    function diagnosaListing($searchText = '', $page, $segment)
+    function diagnosaListing($searchText = '', $segment, $page)
     {
         $this->db->select('BaseTbl.*,BaseTbl2.bagian');
         $this->db->from('diagnosa as BaseTbl');

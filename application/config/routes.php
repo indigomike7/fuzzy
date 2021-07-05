@@ -63,6 +63,7 @@ $route['logout'] = 'user/logout';
 $route['userListing'] = 'user/userListing';
 
 $route['bagianListing'] = 'bagian/bagianListing';
+$route['bagianListing/(:num)'] = "bagian/bagianListing/$1";
 $route['addBagian'] = "bagian/addBagian";
 $route['addNewBagian'] = "bagian/addNewBagian";
 $route['editBagian'] = "bagian/updateBagian";
@@ -71,6 +72,7 @@ $route['deleteBagian'] = "bagian/deleteBagian";
 
 
 $route['diagnosaListing'] = 'diagnosa/diagnosaListing';
+$route['diagnosaListing/(:num)'] = "diagnosa/diagnosaListing/$1";
 $route['addDiagnosa'] = "diagnosa/addDiagnosa";
 $route['addNewDiagnosa'] = "diagnosa/addNewDiagnosa";
 $route['editDiagnosa'] = "diagnosa/updateDiagnosa";
@@ -78,6 +80,7 @@ $route['editDiagnosa/(:num)'] = "diagnosa/editDiagnosa/$1";
 $route['deleteDiagnosa'] = "diagnosa/deleteDiagnosa";
 
 $route['penyakitListing'] = 'penyakit/penyakitListing';
+$route['penyakitListing/(:num)'] = "penyakit/penyakitListing/$1";
 $route['addPenyakit'] = "penyakit/addPenyakit";
 $route['addNewPenyakit'] = "penyakit/addNewPenyakit";
 $route['editPenyakit'] = "penyakit/updatePenyakit";
@@ -86,6 +89,7 @@ $route['deletePenyakit'] = "penyakit/deletePenyakit";
 
 
 $route['solusiListing'] = 'solusi/solusiListing';
+$route['solusiListing/(:num)'] = "solusi/solusiListing/$1";
 $route['addSolusi'] = "solusi/addSolusi";
 $route['addNewSolusi'] = "solusi/addNewSolusi";
 $route['editSolusi'] = "solusi/updateSolusi";
@@ -116,6 +120,7 @@ $route['login-history'] = "user/loginHistoy";
 $route['login-history/(:num)'] = "user/loginHistoy/$1";
 $route['login-history/(:num)/(:num)'] = "user/loginHistoy/$1/$2";
 
+$route['register'] = "login/register";
 $route['forgotPassword'] = "login/forgotPassword";
 $route['resetPasswordUser'] = "login/resetPasswordUser";
 $route['resetPasswordConfirmUser'] = "login/resetPasswordConfirmUser";
