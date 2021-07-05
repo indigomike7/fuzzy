@@ -100,11 +100,6 @@ $rendah=array();
 					{
 						echo "<h4>".$tinggi[$i]->penyakit."</h4>";
 						echo "<p>".$tinggi[$i]->deskripsi."</p>";
-						for($j=1;$j<11;$j++)
-						{
-							//$val = "diagnosa".$j;
-							echo $tinggi[$i]->diagnosa1;
-						}
 						
 						echo "<p>&nbsp;</p><p>&nbsp;</p>";
 					}
@@ -117,11 +112,6 @@ $rendah=array();
 					{
 						echo "<h4>".$sedang[$i]->penyakit."</h4>";
 						echo "<p>".$sedang[$i]->deskripsi."</p>";
-						for($j=1;$j<11;$j++)
-						{
-							//$val = "diagnosa".$j;
-							echo $sedang[$i]->diagnosa1;
-						}
 						
 						echo "<p>&nbsp;</p><p>&nbsp;</p>";
 					}
@@ -134,11 +124,6 @@ $rendah=array();
 					{
 						echo "<h4>".$rendah[$i]->penyakit."</h4>";
 						echo "<p>".$rendah[$i]->deskripsi."</p>";
-						for($j=1;$j<11;$j++)
-						{
-							//$val = "diagnosa".$j;
-							echo $rendah[$i]->diagnosa1;
-						}
 						
 						echo "<p>&nbsp;</p><p>&nbsp;</p>";
 					}
@@ -151,11 +136,15 @@ $rendah=array();
 					{
 						echo "<h4>".$results[$i]->penyakit."</h4>";
 						echo "<p>".$results[$i]->deskripsi."</p>";
-						for($j=1;$j<11;$j++)
-						{
-							//$val = "diagnosa".$j;
-							echo $results[$i]->diagnosa1;
-						}
+						echo "Solusi :<br>";
+							for($j=0;$j<count($solusi);$j++)
+							{
+								//$val = "diagnosa".$j;
+								if($solusi[$j]->penyakit_id==$results[$i]->id)
+								{
+									echo $solusi[$j]->deskripsi;
+								}
+							}
 						
 						echo "<p>&nbsp;</p><p>&nbsp;</p>";
 					}

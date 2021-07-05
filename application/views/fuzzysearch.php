@@ -96,11 +96,6 @@ $rendah=array();
 					{
 						echo "<h4>".$tinggi[$i]->penyakit."</h4>";
 						echo "<p>".$tinggi[$i]->deskripsi."</p>";
-						for($j=1;$j<11;$j++)
-						{
-							//$val = "diagnosa".$j;
-							echo $tinggi[$i]->diagnosa1;
-						}
 						
 						echo "<br/><p class='exact_p'><a href='javascript:exactly(".$tinggi[$i]->id."";
 						for($k=0;$k<count($results['key']);$k++)
@@ -120,11 +115,6 @@ $rendah=array();
 					{
 						echo "<h4>".$sedang[$i]->penyakit."</h4>";
 						echo "<p>".$sedang[$i]->deskripsi."</p>";
-						for($j=1;$j<11;$j++)
-						{
-							//$val = "diagnosa".$j;
-							echo $sedang[$i]->diagnosa1;
-						}
 						echo "<br/><p class='exact_p'><a href='javascript:exactly(".$sedang[$i]->id."";
 						for($k=0;$k<count($results['key']);$k++)
 						{
@@ -144,11 +134,6 @@ $rendah=array();
 					{
 						echo "<h4>".$rendah[$i]->penyakit."</h4>";
 						echo "<p>".$rendah[$i]->deskripsi."</p>";
-						for($j=1;$j<11;$j++)
-						{
-							//$val = "diagnosa".$j;
-							echo $rendah[$i]->diagnosa1;
-						}
 						
 						echo "<br/><p class='exact_p'><a href='javascript:exactly(".$rendah[$i]->id."";
 						for($k=0;$k<count($results['key']);$k++)
@@ -170,11 +155,6 @@ $rendah=array();
 						{
 							echo "<h4>".$results['results2'][$i]->penyakit."</h4>";
 							echo "<p>".$results['results2'][$i]->deskripsi."</p>";
-							for($j=1;$j<11;$j++)
-							{
-								//$val = "diagnosa".$j;
-								echo $results['results2'][$i]->diagnosa1;
-							}
 							echo "<p>&nbsp;</p><p>&nbsp;</p>";
 						}
 					}
@@ -185,11 +165,12 @@ $rendah=array();
 						{
 							echo "<h4>".$results['results'][$i]->penyakit."</h4>";
 							echo "<p>".$results['results'][$i]->deskripsi."</p>";
-							for($j=1;$j<11;$j++)
-							{
+							echo "Solusi :<br>";
 								//$val = "diagnosa".$j;
-								echo $results['results'][$i]->diagnosa1;
-							}
+								if($solusi[$j]->penyakit_id==$results[$i]->id)
+								{
+									echo $solusi[$j]->deskripsi;
+								}
 							echo "<br/><p class='exact_p'><a href='javascript:exactly(".$results['results'][$i]->id."";
 							for($k=0;$k<count($results['key']);$k++)
 							{

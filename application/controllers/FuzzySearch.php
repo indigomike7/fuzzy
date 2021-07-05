@@ -105,7 +105,8 @@ class FuzzySearch extends BaseController
 		//echo "<pre>"; echo var_dump($data['results']); echo "</pre>";;
 		
 		}
-		$data['diagnosa'] = $this->diagnosa_model->diagnosaListingAll();
+		$data['solusi'] = $this->diagnosa_model->solusiListingAll();
+		$data['diagnosa'] = $this->solusi_model->diagnosaListingAll();
 		$data['keyword'] = $keyword;
 		$this->loadViews("fuzzysearch", $this->global, $data, NULL);
     }
